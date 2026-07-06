@@ -21,6 +21,11 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--silver-bright);overflow-x:hidden;cursor:none}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-glow)}
+html{scrollbar-color:var(--accent) var(--navy);scrollbar-width:thin}
 .cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .15s,height .15s}
 .cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .08s ease;opacity:.45}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
@@ -57,6 +62,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-primary:hover{box-shadow:0 0 26px rgba(58,123,213,.5);transform:translateY(-2px)}
 .btn-whatsapp{background:#25D366!important;border-color:#25D366!important}
 .btn-whatsapp:hover{box-shadow:0 0 22px rgba(37,211,102,.45)!important}
+.btn-whatsapp-icon{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#25D366;border-radius:50%;transition:all .25s;box-shadow:0 4px 14px rgba(37,211,102,.35)}
+.btn-whatsapp-icon:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 0 26px rgba(37,211,102,.5)}
+.btn-rf-icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--navy-mid);border:1px solid rgba(125,202,143,.35);border-radius:50%;transition:all .25s;box-shadow:0 4px 14px rgba(125,202,143,.2)}
+.btn-rf-icon img{width:26px;height:26px;object-fit:contain}
+.btn-rf-icon:hover{transform:translateY(-2px) scale(1.05);border-color:var(--green);box-shadow:0 0 22px rgba(125,202,143,.4)}
+.portfolio-overlay{position:fixed;inset:0;z-index:500;background:rgba(6,15,30,.85);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
+.portfolio-overlay.active{display:flex}
+.portfolio-card{position:relative;max-width:520px;width:100%;max-height:80vh;overflow-y:auto;background:var(--navy-mid);border:1px solid rgba(58,123,213,.25);border-radius:10px;padding:32px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.portfolio-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:rgba(58,123,213,.1);border:1px solid rgba(58,123,213,.2);color:#fff;cursor:pointer;font-size:14px}
+.portfolio-close:hover{background:var(--accent)}
+.portfolio-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:18px}
+.portfolio-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid rgba(58,123,213,.12)}
+.portfolio-item:last-child{border-bottom:none}
+.portfolio-item-name{font-size:14.5px;color:var(--silver-bright);font-weight:500}
+.portfolio-item-desc{font-size:12px;color:var(--text-muted);margin-top:3px}
+.portfolio-item a.pv{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-decoration:none;padding:6px 12px;border:1px solid rgba(58,123,213,.3);border-radius:3px;white-space:nowrap}
+.portfolio-item a.pv:hover{background:var(--accent);color:#fff}
 .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:transparent;color:var(--silver-bright);border-radius:3px;text-decoration:none;font-weight:500;font-size:14px;transition:all .25s;border:1px solid rgba(200,212,232,.18)}
 .btn-secondary:hover{border-color:var(--silver);background:rgba(200,212,232,.05)}
 
@@ -80,7 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* Floating logo */
 .hero-logo{position:absolute;right:7%;top:50%;transform:translateY(-50%);z-index:2;opacity:0;animation:fadescale .9s ease forwards 1s}
-.hero-logo img{width:300px;height:300px;object-fit:contain;filter:drop-shadow(0 0 40px rgba(58,123,213,.5)) drop-shadow(0 0 80px rgba(58,123,213,.2));animation:float 6s ease-in-out infinite}
+.hero-logo img{width:440px;height:440px;object-fit:contain;filter:drop-shadow(0 0 40px rgba(58,123,213,.5)) drop-shadow(0 0 80px rgba(58,123,213,.2));animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(2deg)}}
 @keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadescale{from{opacity:0;transform:translateY(-50%) scale(.85)}to{opacity:1;transform:translateY(-50%) scale(1)}}
@@ -260,7 +282,7 @@ footer{position:relative;z-index:1;padding:26px 48px;border-top:1px solid rgba(5
     <h1 class="hero-title">WE FIX.<br>WE BUILD.<br><span class="outline">WE DELIVER.</span></h1>
     <p class="hero-sub">Your all-in-one <strong>tech partner on Mykonos</strong>. PC &amp; laptop repair, web development, graphic design, social media, and professional network cabling — done right, every time.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/306978141975" target="_blank" class="btn-primary btn-whatsapp">💬 WhatsApp Us</a>
+      <a href="https://wa.me/306978141975" target="_blank" class="btn-whatsapp-icon" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.2-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.7 14.9 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg></a>
       <a href="#services" class="btn-secondary">→ Our Services</a>
     </div>
     <!-- RouteFlow embed-style banner -->
@@ -294,9 +316,9 @@ footer{position:relative;z-index:1;padding:26px 48px;border-top:1px solid rgba(5
     <p class="sec-desc reveal rd2">Six specialties, one team. Whether your laptop won't boot or your brand needs a full digital presence — we handle it.</p>
     <div class="services-grid">
       <div class="svc-card reveal"><span class="svc-num">01</span><div class="svc-icon">💻</div><div class="svc-name">PC &amp; Laptop Repair</div><p class="svc-desc">Diagnostics, hardware swaps, screen replacements, OS reinstalls, virus removal and full system tune-ups. Fast turnaround, no data loss.</p><div class="svc-tags"><span class="svc-tag">HARDWARE</span><span class="svc-tag">SOFTWARE</span><span class="svc-tag">DIAGNOSTICS</span></div></div>
-      <div class="svc-card reveal rd1"><span class="svc-num">02</span><div class="svc-icon">🌐</div><div class="svc-name">Web Development</div><p class="svc-desc">Clean, fast, mobile-first websites and web apps. From landing pages to full custom builds — designed to convert and perform.</p><div class="svc-tags"><span class="svc-tag">HTML/CSS</span><span class="svc-tag">REACT</span><span class="svc-tag">SEO</span></div></div>
-      <div class="svc-card reveal rd2"><span class="svc-num">03</span><div class="svc-icon">🎨</div><div class="svc-name">Graphic Design</div><p class="svc-desc">Logos, brand identities, social visuals, and UI design. We make your business look like it means business.</p><div class="svc-tags"><span class="svc-tag">BRANDING</span><span class="svc-tag">UI/UX</span></div></div>
-      <div class="svc-card reveal rd3"><span class="svc-num">04</span><div class="svc-icon">📱</div><div class="svc-name">Social Media Management</div><p class="svc-desc">Content creation, scheduling, growth strategy and analytics. We grow your audience while you run your business.</p><div class="svc-tags"><span class="svc-tag">CONTENT</span><span class="svc-tag">STRATEGY</span><span class="svc-tag">ANALYTICS</span></div></div>
+      <div class="svc-card reveal rd1" onclick="openPortfolio('web')" style="cursor:pointer"><span class="svc-num">02</span><div class="svc-icon">🌐</div><div class="svc-name">Web Development</div><p class="svc-desc">Clean, fast, mobile-first websites and web apps. From landing pages to full custom builds — designed to convert and perform.</p><div class="svc-tags"><span class="svc-tag">HTML/CSS</span><span class="svc-tag">REACT</span><span class="svc-tag">SEO</span></div><div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:1px">VIEW WORK →</div></div>
+      <div class="svc-card reveal rd2" onclick="openPortfolio('design')" style="cursor:pointer"><span class="svc-num">03</span><div class="svc-icon">🎨</div><div class="svc-name">Graphic Design</div><p class="svc-desc">Logos, brand identities, social visuals, and UI design. We make your business look like it means business.</p><div class="svc-tags"><span class="svc-tag">BRANDING</span><span class="svc-tag">UI/UX</span></div><div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:1px">VIEW WORK →</div></div>
+      <div class="svc-card reveal rd3" onclick="openPortfolio('social')" style="cursor:pointer"><span class="svc-num">04</span><div class="svc-icon">📱</div><div class="svc-name">Social Media Management</div><p class="svc-desc">Content creation, scheduling, growth strategy and analytics. We grow your audience while you run your business.</p><div class="svc-tags"><span class="svc-tag">CONTENT</span><span class="svc-tag">STRATEGY</span><span class="svc-tag">ANALYTICS</span></div><div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:1px">VIEW WORK →</div></div>
       <div class="svc-card reveal rd4"><span class="svc-num">05</span><div class="svc-icon">🔌</div><div class="svc-name">Ethernet &amp; Network Cabling</div><p class="svc-desc">Professional RJ45 terminations, keystone installations, and rack tracing. We use a cable tester to pinpoint every port in the rack — clean, reliable, documented.</p><div class="svc-tags"><span class="svc-tag">RJ45</span><span class="svc-tag">KEYSTONE</span><span class="svc-tag">CAT6</span></div></div>
       <div class="svc-card reveal rd5"><span class="svc-num">06</span><div class="svc-icon">🛠️</div><div class="svc-name">IT Support &amp; Consulting</div><p class="svc-desc">On-site or remote support for businesses and individuals. Setup, maintenance, upgrades, and expert advice tailored to Mykonos.</p><div class="svc-tags"><span class="svc-tag">ON-SITE</span><span class="svc-tag">REMOTE</span><span class="svc-tag">CONSULTING</span></div></div>
     </div>
@@ -400,9 +422,10 @@ footer{position:relative;z-index:1;padding:26px 48px;border-top:1px solid rgba(5
         <div class="contact-item reveal rd1"><div class="ci-icon">📧</div><div><div class="c-label">Email</div><div class="c-value"><a href="mailto:illusions.tech.gr@gmail.com">illusions.tech.gr@gmail.com</a></div></div></div>
         <div class="contact-item reveal rd2"><div class="ci-icon">📱</div><div><div class="c-label">WhatsApp / Phone</div><div class="c-value"><a href="tel:+306978141975">+30 6978 141 975</a></div></div></div>
         <div class="contact-item reveal rd3"><div class="ci-icon">📍</div><div><div class="c-label">Location</div><div class="c-value">Mykonos, South Aegean, Greece</div></div></div>
-        <div class="reveal rd4" style="margin-top:8px"><a href="https://wa.me/306978141975" target="_blank" class="wa-btn">💬WhatsApp</a></div>
+        <div class="contact-item reveal rd3"><div class="ci-icon">📷</div><div><div class="c-label">Instagram</div><div class="c-value"><a href="https://www.instagram.com/illusions_tech/" target="_blank">@illusions_tech</a></div></div></div>
+        <div class="reveal rd4" style="margin-top:8px"><a href="https://wa.me/306978141975" target="_blank" class="btn-whatsapp-icon" aria-label="WhatsApp" style="width:48px;height:48px"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.2-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.7 14.9 3.3 13.5 3.3 12c0-4.8 3.9-8.7 8.7-8.7s8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"/></svg></a></div>
         <div class="reveal rd5" style="margin-top:16px">
-          <a href="https://kl666v.github.io/routeflow" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);text-decoration:none;padding:8px 14px;border:1px solid rgba(125,202,143,.25);border-radius:3px;background:rgba(125,202,143,.05);transition:all .2s" onmouseover="this.style.background='rgba(125,202,143,.1)'" onmouseout="this.style.background='rgba(125,202,143,.05)'">⚡ RouteFlow App ↗</a>
+          <a href="https://kl666v.github.io/routeflow" target="_blank" class="btn-rf-icon" aria-label="RouteFlow App"><img src="https://i.ibb.co/gMVJHDMT/RF.png" alt="RouteFlow"></a>
         </div>
       </div>
       <div>
@@ -437,6 +460,7 @@ footer{position:relative;z-index:1;padding:26px 48px;border-top:1px solid rgba(5
     <a href="#routeflow">RouteFlow</a>
     <a href="#contact">Contact</a>
     <a href="https://kl666v.github.io/routeflow" target="_blank" class="frf">⚡ RouteFlow ↗</a>
+    <a href="https://www.instagram.com/illusions_tech/" target="_blank">Instagram</a>
   </div>
   <div class="footer-copy">© 2026 Illusions Tech · Mykonos, Greece</div>
 </footer>
@@ -473,6 +497,48 @@ function handleForm(e){
   btn.style.background='#25D366';
   setTimeout(()=>{btn.textContent='SEND MESSAGE →';btn.style.background='';e.target.reset()},4000);
 }
+
+// Portfolio popup
+const portfolioData = {
+  web: {
+    title: 'Web Development — Live Projects',
+    items: [
+      {name:'Mykonos Aqua', desc:'Business website', url:'https://mykonosaqua.com/'},
+      {name:'Mykonos Management', desc:'Property management site', url:'https://mykonosmanagement.com/'},
+      {name:'Grace Villa Mykonos', desc:'Villa rental website', url:'https://gracevillamykonos.com/'}
+    ]
+  },
+  design: {
+    title: 'Graphic Design — Portfolio',
+    items: [
+      {name:'Design Portfolio', desc:'Selected graphic design work', url:'https://pdflink.to/kl666v/'}
+    ]
+  },
+  social: {
+    title: 'Social Media Management — Accounts',
+    items: [
+      {name:'@dolce_ankli', desc:'Instagram', url:'https://www.instagram.com/dolce_ankli/'},
+      {name:'@ana.travel.tours', desc:'TikTok', url:'https://www.tiktok.com/@ana.travel.tours'}
+    ]
+  }
+};
+function openPortfolio(key){
+  const d = portfolioData[key];
+  const body = document.getElementById('portfolioBody');
+  body.innerHTML = `<h3>${d.title}</h3>` + d.items.map(i =>
+    `<div class="portfolio-item"><div><div class="portfolio-item-name">${i.name}</div><div class="portfolio-item-desc">${i.desc}</div></div><a class="pv" href="${i.url}" target="_blank">VISIT ↗</a></div>`
+  ).join('');
+  document.getElementById('portfolioOverlay').classList.add('active');
+}
+function closePortfolio(e){
+  document.getElementById('portfolioOverlay').classList.remove('active');
+}
 </script>
+<div class="portfolio-overlay" id="portfolioOverlay" onclick="closePortfolio(event)">
+  <div class="portfolio-card" onclick="event.stopPropagation()">
+    <button class="portfolio-close" onclick="closePortfolio()">✕</button>
+    <div id="portfolioBody"></div>
+  </div>
+</div>
 </body>
 </html>
