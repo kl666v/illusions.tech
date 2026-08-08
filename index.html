@@ -73,7 +73,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .portfolio-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:rgba(58,123,213,.1);border:1px solid rgba(58,123,213,.2);color:#fff;cursor:pointer;font-size:14px}
 .portfolio-close:hover{background:var(--accent)}
 .portfolio-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:18px}
-.web-preview-grid{display:flex;flex-direction:column;gap:22px;margin-top:20px}.web-preview{border:1px solid rgba(58,123,213,.2);border-radius:10px;overflow:hidden;background:rgba(6,15,30,.75)}.web-preview-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(58,123,213,.12)}.web-preview-name{font-size:13px;color:var(--silver-bright);font-weight:500}.web-preview-link{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);text-decoration:none}.web-preview-link:hover{text-decoration:underline}.web-preview-frame{width:100%;height: 420px;px;border:0;display:block;background:#fff}.web-preview-foot{padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.portfolio-card.web-portfolio-card{width:min(1000px,94vw);max-height:90vh;overflow:auto}.portfolio-card.web-portfolio-card h3{margin-bottom:4px}@media(max-width:700px){.web-preview-grid{grid-template-columns:1fr}.web-preview-frame{height:210px}}
+.web-preview-grid{display:flex;flex-direction:column;gap:28px;margin-top:20px}.web-preview{border:1px solid rgba(58,123,213,.2);border-radius:10px;overflow:hidden;background:rgba(6,15,30,.75)}.web-preview-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(58,123,213,.12)}.web-preview-name{font-size:15px;color:var(--silver-bright);font-weight:500}.web-preview-link{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-decoration:none}.web-preview-link:hover{text-decoration:underline}.web-preview-frame{width:100%;height:620px;border:0;display:block;background:#fff}.web-preview-foot{padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.portfolio-card.web-portfolio-card{width:min(1800px,98vw);max-width:1800px;max-height:90vh;overflow:auto;padding:36px 20px}.portfolio-card.web-portfolio-card h3{margin-bottom:4px;padding:0 16px}@media(max-width:700px){.web-preview-grid{grid-template-columns:1fr}.web-preview-frame{height:340px}}
+.nfc-preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}.nfc-preview-img{width:100%;border-radius:10px;border:1px solid rgba(58,123,213,.25);display:block;background:#fff}.nfc-stock-desc{font-size:13.5px;line-height:1.6;color:var(--silver-bright);margin-top:18px}.nfc-stock-badge{display:inline-block;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#25D366;border:1px solid rgba(37,211,102,.35);background:rgba(37,211,102,.08);padding:6px 12px;border-radius:20px}.portfolio-card.nfc-portfolio-card{width:min(720px,94vw)}
 .portfolio-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid rgba(58,123,213,.12)}
 .portfolio-item:last-child{border-bottom:none}
 .portfolio-item-name{font-size:14.5px;color:var(--silver-bright);font-weight:500}
@@ -323,7 +324,7 @@ footer{position:relative;z-index:1;padding:26px 48px;border-top:1px solid rgba(5
       <div class="svc-card reveal rd4"><span class="svc-num">05</span><div class="svc-icon">🔌</div><div class="svc-name">Ethernet &amp; Network Cabling</div><p class="svc-desc">Professional RJ45 terminations, keystone installations, and rack tracing. We use a cable tester to pinpoint every port in the rack — clean, reliable, documented.</p><div class="svc-tags"><span class="svc-tag">RJ45</span><span class="svc-tag">KEYSTONE</span><span class="svc-tag">CAT6</span></div></div>
       <div class="svc-card reveal rd5"><span class="svc-num">06</span><div class="svc-icon">🛠️</div><div class="svc-name">IT Support &amp; Consulting</div><p class="svc-desc">On-site or remote support for businesses and individuals. Setup, maintenance, upgrades, and expert advice tailored to Mykonos.</p><div class="svc-tags"><span class="svc-tag">ON-SITE</span><span class="svc-tag">REMOTE</span><span class="svc-tag">CONSULTING</span></div></div>
       <div class="svc-card reveal rd6"><span class="svc-num">07</span><div class="svc-icon">🎲</div><div class="svc-name">NFC Cards</div><p class="svc-desc">Tap-to-review NFC cards tailored for Mykonos businesses. Instant five-star feedback setup, customization, routing, and expert deployment advice.</p><div class="svc-tags"><span class="svc-tag">GOOGLE</span><span class="svc-tag">NFC</span><span class="svc-tag">CARDS</span></div></div>
-       <div class="svc-card reveal rd7"><span class="svc-num">08</span><div class="svc-icon">📶</div><div class="svc-name">SERVER & NETWORK RACK SERVICES</div><p class="svc-desc">Professional rack setup, cable management, and hardware integration tailored for Mykonos infrastructure. Optimizing ventilation, security, and performance.</p><div class="svc-tags"><span class="svc-tag">ORGANIZATION</span><span class="svc-tag">RESTRUCTURING</span><span class="svc-tag">MAINTENANCE</span></div></div>
+       <div class="svc-card reveal rd7" onclick="openPortfolio('nfcstock')" style="cursor:pointer"><span class="svc-num">08</span><div class="svc-icon">📶</div><div class="svc-name">SERVER & NETWORK RACK SERVICES</div><p class="svc-desc">Professional rack setup, cable management, and hardware integration tailored for Mykonos infrastructure. Optimizing ventilation, security, and performance.</p><div class="svc-tags"><span class="svc-tag">ORGANIZATION</span><span class="svc-tag">RESTRUCTURING</span><span class="svc-tag">MAINTENANCE</span></div></div>
     </div>
 
 <!-- ABOUT / STATS -->
@@ -525,18 +526,31 @@ const portfolioData = {
       {name:'@dolce_ankli', desc:'Instagram', url:'https://www.instagram.com/dolce_ankli/'},
       {name:'@ana.travel.tours', desc:'TikTok', url:'https://www.tiktok.com/@ana.travel.tours'}
     ]
+  },
+  nfcstock: {
+    title: 'NFC Review Card — In Stock',
+    desc: 'Tap-to-review NFC card ready to ship now. Instantly sends customers to your Google review page with one tap — no app required. Durable PVC card, pre-programmed and tested.',
+    images: [
+      'https://images1.vinted.net/t/06_007ac_esSBeCoTthbcDcWaGSxPg8MU/f800/1785180198.webp?s=552cbea8f3e99989ee7b727e1014b651dcb6b09d',
+      'https://images1.vinted.net/t/02_0105d_KQQM2PbUxVkN1KucnhnqFrgr/f800/1785180198.webp?s=200187d5b6fbbbb4fbdbd5ac35ad12d3a7adca70'
+    ]
   }
 };
 function openPortfolio(key){
   const d = portfolioData[key];
   const body = document.getElementById('portfolioBody');
+  document.querySelector('.portfolio-card').classList.remove('web-portfolio-card','nfc-portfolio-card');
   if(key === 'web'){
     body.innerHTML = `<h3>${d.title}</h3><div class="web-preview-grid">` + d.items.map(i =>
       `<div class="web-preview"><div class="web-preview-head"><div class="web-preview-name">${i.name}</div><a class="web-preview-link" href="${i.url}" target="_blank" rel="noopener">OPEN ↗</a></div><iframe class="web-preview-frame" src="${i.url}" loading="lazy" title="${i.name} preview"></iframe><div class="web-preview-foot">${i.url}</div></div>`
     ).join('') + `</div>`;
     document.querySelector('.portfolio-card').classList.add('web-portfolio-card');
+  } else if(key === 'nfcstock'){
+    body.innerHTML = `<h3>${d.title}</h3><div class="nfc-preview-grid">` + d.images.map(src =>
+      `<img class="nfc-preview-img" src="${src}" loading="lazy" alt="NFC card in stock">`
+    ).join('') + `</div><p class="nfc-stock-desc">${d.desc}</p><span class="nfc-stock-badge">● AVAILABLE NOW</span>`;
+    document.querySelector('.portfolio-card').classList.add('nfc-portfolio-card');
   } else {
-    document.querySelector('.portfolio-card').classList.remove('web-portfolio-card');
     body.innerHTML = `<h3>${d.title}</h3>` + d.items.map(i =>
       `<div class="portfolio-item"><div><div class="portfolio-item-name">${i.name}</div><div class="portfolio-item-desc">${i.desc}</div></div><a class="pv" href="${i.url}" target="_blank">VISIT ↗</a></div>`
     ).join('');
